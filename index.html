@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>龜山冷泉開心農場 露營車之旅 🚐</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#F4F7F4',
+                            100: '#E3EBE3',
+                            600: '#3D6A38',
+                            700: '#2D5228',
+                            800: '#234120',
+                            900: '#1B3218',
+                        },
+                        earth: {
+                            50: '#FAF8F5',
+                            100: '#F3EDE2',
+                            200: '#E7D9C2',
+                            500: '#C29B63',
+                            800: '#5C4428',
+                        },
+                        warm: '#FFFDF9'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F2EB;
+            color: #2D312E;
+            -webkit-tap-highlight-color: transparent;
+            font-feature-settings: "cv11", "ss01";
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(45, 82, 40, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+        .active-tab {
+            background-color: #2D5228;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased pb-12 select-none">
+
+    <!-- Header / Banner Section -->
+    <div class="relative w-full h-64 bg-forest-800 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=1000&q=80" 
+             alt="Camping Van" 
+             class="w-full h-full object-cover opacity-35 mix-blend-overlay">
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-forest-900/90"></div>
+
+        <!-- Floating Badge -->
+        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white font-medium flex items-center gap-1.5 border border-white/30 shadow-sm">
+            <i class="fa-solid fa-dog text-amber-300"></i> 寵物友善露營 🐾
+        </div>
+
+        <!-- Banner Text Content -->
+        <div class="absolute bottom-5 left-0 right-0 px-5 text-white">
+            <div class="flex items-center gap-2 mb-1.5">
+                <span class="bg-amber-600 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-md tracking-wider">兩天一夜</span>
+                <span class="text-xs text-earth-200 font-medium"><i class="fa-solid fa-van-shuttle mr-1"></i>豪華露營車體驗</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white drop-shadow-sm">龜山冷泉開心農場</h1>
+            <p class="text-xs text-earth-100 flex items-center gap-1 mt-1 font-normal opacity-90">
+                <i class="fa-solid fa-location-dot text-amber-400"></i> 桃園市龜山區大同路1020號
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-md mx-auto px-4 -mt-5 relative z-10 space-y-4">
+
+        <!-- Countdown Card -->
+        <div class="bg-white rounded-2xl p-4 card-shadow border border-forest-100 text-center">
+            <div class="text-xs font-bold text-forest-700 uppercase tracking-wider mb-2.5 flex items-center justify-center gap-1.5">
+                <i class="fa-regular fa-clock text-amber-600"></i> 距離入營倒數
+            </div>
+            <div class="grid grid-cols-4 gap-2 text-center" id="countdown">
+                <div class="bg-forest-50 p-2 rounded-xl border border-forest-100">
+                    <span id="days" class="block text-2xl font-black text-forest-800">--</span>
+                    <span class="text-[10px] text-gray-500 font-medium">天</span>
+                </div>
+                <div class="bg-forest-50 p-2 rounded-xl border border-forest-100">
+                    <span id="hours" class="block text-2xl font-black text-forest-800">--</span>
+                    <span class="text-[10px] text-gray-500 font-medium">時</span>
+                </div>
+                <div class="bg-forest-50 p-2 rounded-xl border border-forest-100">
+                    <span id="minutes" class="block text-2xl font-black text-forest-800">--</span>
+                    <span class="text-[10px] text-gray-500 font-medium">分</span>
+                </div>
+                <div class="bg-forest-50 p-2 rounded-xl border border-forest-100">
+                    <span id="seconds" class="block text-2xl font-black text-forest-800">--</span>
+                    <span class="text-[10px] text-gray-500 font-medium">秒</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-2">
+            <a href="tel:0931032898" 
+               class="bg-forest-700 hover:bg-forest-800 text-white font-bold py-3 px-1 rounded-xl text-center shadow-sm flex flex-col items-center justify-center transition active:scale-95">
+                <i class="fa-solid fa-phone text-base mb-1"></i>
+                <span class="text-[11px]">撥打電話</span>
+            </a>
+            
+            <a href="https://www.google.com/maps/search/?api=1&query=桃園市龜山區大同路1020號" 
+               target="_blank"
+               class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-1 rounded-xl text-center shadow-sm flex flex-col items-center justify-center transition active:scale-95">
+                <i class="fa-solid fa-location-arrow text-base mb-1"></i>
+                <span class="text-[11px]">開啟導航</span>
+            </a>
+
+            <a href="https://www.happycamp.com.tw/index" 
+               target="_blank"
+               class="bg-earth-800 hover:bg-earth-900 text-white font-bold py-3 px-1 rounded-xl text-center shadow-sm flex flex-col items-center justify-center transition active:scale-95">
+                <i class="fa-solid fa-globe text-base mb-1"></i>
+                <span class="text-[11px]">官方網站</span>
+            </a>
+
+            <button onclick="shareTripInfo()" 
+                    class="bg-stone-700 hover:bg-stone-800 text-white font-bold py-3 px-1 rounded-xl text-center shadow-sm flex flex-col items-center justify-center transition active:scale-95">
+                <i class="fa-solid fa-share-nodes text-base mb-1"></i>
+                <span class="text-[11px]">分享行程</span>
+            </button>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 card-shadow space-y-4 border border-earth-100">
+            <h2 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2.5 flex items-center justify-between">
+                <span><i class="fa-solid fa-circle-info text-forest-600 mr-2"></i>活動重點資訊</span>
+                <span class="text-xs font-normal text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60">自行前往</span>
+            </h2>
+
+            <!-- Date -->
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-forest-50 flex items-center justify-center text-forest-700 shrink-0 mt-0.5 border border-forest-100">
+                    <i class="fa-solid fa-calendar-days text-sm"></i>
+                </div>
+                <div>
+                    <div class="text-[11px] text-gray-400 font-medium uppercase">活動日期 & 時間</div>
+                    <div class="text-sm font-bold text-gray-800 mt-0.5">
+                        民國 115 年 (2026年) 10 月 17 日（六）
+                    </div>
+                    <div class="text-xs text-forest-700 font-medium mt-0.5">
+                        ⏰ 15:00 辦理入營 ～ 10 月 18 日（日）退營
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 shrink-0 mt-0.5 border border-amber-100">
+                    <i class="fa-solid fa-map-pin text-sm"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="text-[11px] text-gray-400 font-medium uppercase">營區地址</div>
+                    <div class="text-sm font-bold text-gray-800 mt-0.5">
+                        桃園市龜山區大同路1020號
+                    </div>
+                    <p class="text-xs text-gray-500 mt-0.5">龜山冷泉開心農場</p>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700 shrink-0 mt-0.5 border border-emerald-100">
+                    <i class="fa-solid fa-user-headset text-sm"></i>
+                </div>
+                <div>
+                    <div class="text-[11px] text-gray-400 font-medium uppercase">營主聯絡電話</div>
+                    <a href="tel:0931032898" class="text-sm font-bold text-forest-700 hover:underline inline-block mt-0.5">
+                        0931-032898 <i class="fa-solid fa-phone-volume text-xs ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-amber-50/90 to-earth-50 rounded-2xl p-5 border border-amber-200/70 card-shadow space-y-3">
+            <h2 class="text-base font-bold text-amber-950 flex items-center">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>行前重要注意事項
+            </h2>
+            
+            <div class="space-y-2.5 text-xs text-amber-950 leading-relaxed">
+                <div class="flex items-start gap-2.5 bg-white/60 p-2.5 rounded-xl border border-amber-200/40">
+                    <i class="fa-solid fa-leaf text-forest-600 mt-0.5 shrink-0 text-sm"></i>
+                    <div>
+                        <strong>個人衛生與環保：</strong><br>
+                        露營車內已提供基本盥洗用具，但為了個人衛生與響應環保，請<strong>自行攜帶毛巾、梳子、刮鬍刀</strong>等個人用品。
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-2.5 bg-white/60 p-2.5 rounded-xl border border-amber-200/40">
+                    <i class="fa-solid fa-shield-dog text-amber-700 mt-0.5 shrink-0 text-sm"></i>
+                    <div>
+                        <strong>寵物友善同行：</strong><br>
+                        可攜帶狗狗一同前往！請備妥牽繩、寵物便便袋及隨身水碗，隨時維護營區清潔。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 card-shadow space-y-3 border border-earth-100">
+            <div class="flex items-center justify-between border-b border-gray-100 pb-2.5">
+                <h2 class="text-base font-bold text-gray-800 flex items-center">
+                    <i class="fa-solid fa-list-check text-forest-600 mr-2"></i>行李攜帶清單 Check!
+                </h2>
+                <span class="text-[11px] bg-forest-50 text-forest-700 px-2.5 py-0.5 rounded-full font-bold border border-forest-100" id="checkedCount">0/8 完成</span>
+            </div>
+
+            <p class="text-xs text-gray-400">勾選項目會自動儲存於手機，避免遺漏準備物品：</p>
+
+            <div class="space-y-2 pt-1" id="checklistContainer">
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item1" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">個人毛巾與大浴巾 🧺</span>
+                    </div>
+                    <span class="text-[10px] text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded">必備</span>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item2" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">梳子 & 刮鬍刀 🪮</span>
+                    </div>
+                    <span class="text-[10px] text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded">必備</span>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item3" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">狗狗飼料、牽繩、撿便袋 🐶</span>
+                    </div>
+                    <span class="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">毛孩</span>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item4" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">戶外防蚊液 / 防蚊貼片 🦟</span>
+                    </div>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item5" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">保暖外套 / 防風外套 🧥</span>
+                    </div>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item6" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">拖鞋 / 便鞋（露營車進出方便） 🩴</span>
+                    </div>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item7" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">行動電源 & 充電線 🔋</span>
+                    </div>
+                </label>
+
+                <label class="flex items-center justify-between p-2.5 rounded-xl border border-gray-100 bg-stone-50/50 hover:bg-stone-100/50 transition cursor-pointer">
+                    <div class="flex items-center gap-2.5">
+                        <input type="checkbox" data-id="item8" onchange="toggleCheckItem(this)" class="w-4 h-4 text-forest-700 rounded border-gray-300 focus:ring-forest-600 checklist-item">
+                        <span class="text-xs font-medium text-gray-700 item-text">個人常用藥品 / 暈車藥 💊</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 card-shadow space-y-4 border border-earth-100">
+            <h2 class="text-base font-bold text-gray-800 flex items-center">
+                <i class="fa-solid fa-route text-forest-600 mr-2"></i>兩天一夜推薦行程排程
+            </h2>
+
+            <!-- Day Selector Tabs -->
+            <div class="flex bg-stone-100 p-1 rounded-xl gap-1 text-xs font-bold">
+                <button id="tabDay1" onclick="switchDay(1)" class="flex-1 py-2 text-center rounded-lg transition active-tab">
+                    Day 1 (10/17 六)
+                </button>
+                <button id="tabDay2" onclick="switchDay(2)" class="flex-1 py-2 text-center rounded-lg text-gray-500 hover:text-gray-800 transition">
+                    Day 2 (10/18 日)
+                </button>
+            </div>
+
+            <!-- Day 1 Schedule -->
+            <div id="scheduleDay1" class="relative border-l-2 border-forest-200 ml-2.5 pl-4 space-y-4 py-1">
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-forest-700 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-forest-700">15:00</div>
+                    <div class="text-xs font-bold text-gray-800">辦理入住登記 & 露營車開箱</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">營區報到，放置行李，熟悉露營車設備。</div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-amber-600 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-amber-700">16:00 ~ 18:00</div>
+                    <div class="text-xs font-bold text-gray-800">農場漫步 / 冷泉體驗 / 遛狗時光</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">欣賞龜山自然風景、帶狗狗在草地上奔跑散步。</div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-orange-600 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-orange-700">18:30</div>
+                    <div class="text-xs font-bold text-gray-800">營區晚餐 / 戶外交流時光</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">享用美味晚餐，戶外涼亭談天放鬆。</div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-indigo-600 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-indigo-700">21:30</div>
+                    <div class="text-xs font-bold text-gray-800">舒適盥洗 & 星空晚安</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">露營車內舒適熱水盥洗，準備就寢。</div>
+                </div>
+            </div>
+
+            <!-- Day 2 Schedule -->
+            <div id="scheduleDay2" class="relative border-l-2 border-amber-200 ml-2.5 pl-4 space-y-4 py-1 hidden">
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-amber-600 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-amber-700">08:30 ~ 09:30</div>
+                    <div class="text-xs font-bold text-gray-800">晨光早餐 & 呼吸新鮮空氣</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">享用活力早餐，享受山區清晨寧靜。</div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-forest-700 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-forest-700">10:00 ~ 11:00</div>
+                    <div class="text-xs font-bold text-gray-800">整理個人物品 & 退房</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">檢查個人盥洗用品，辦理退房手續。</div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 bg-stone-600 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-bold text-stone-700">11:00 ~</div>
+                    <div class="text-xs font-bold text-gray-800">滿載回億，愉快返程</div>
+                    <div class="text-[11px] text-gray-500 mt-0.5">平安賦歸，期待下一次的露營聚會！</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center pt-2 pb-6 text-xs text-stone-400">
+            <p>祝大家擁有愉快難忘的露營體驗！✨🚐</p>
+        </div>
+
+    </div>
+
+    <!-- Notification Toast UI -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/90 text-white text-xs px-4 py-2.5 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">已成功複製行程資訊！</span>
+    </div>
+
+    <script>
+        // Target Date Logic: 2026/10/17 15:00
+        const targetDate = new Date("2026-10-17T15:00:00+08:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = `
+                    <div class="col-span-4 text-center text-forest-700 font-bold text-sm py-2">
+                        🎉 活動進行中！祝大家露營愉快！ 🎉
+                    </div>`;
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // LocalStorage Checklist Logic
+        function loadChecklistState() {
+            const checkboxes = document.querySelectorAll('.checklist-item');
+            checkboxes.forEach(cb => {
+                const id = cb.getAttribute('data-id');
+                const savedState = localStorage.getItem('camp_check_' + id);
+                if (savedState === 'true') {
+                    cb.checked = true;
+                    cb.closest('label').classList.add('bg-emerald-50/60', 'border-emerald-200');
+                }
+            });
+            updateCheckCount();
+        }
+
+        function toggleCheckItem(el) {
+            const id = el.getAttribute('data-id');
+            localStorage.setItem('camp_check_' + id, el.checked);
+            
+            const parentLabel = el.closest('label');
+            if (el.checked) {
+                parentLabel.classList.add('bg-emerald-50/60', 'border-emerald-200');
+            } else {
+                parentLabel.classList.remove('bg-emerald-50/60', 'border-emerald-200');
+            }
+
+            updateCheckCount();
+        }
+
+        function updateCheckCount() {
+            const all = document.querySelectorAll('.checklist-item');
+            const checked = document.querySelectorAll('.checklist-item:checked');
+            document.getElementById('checkedCount').innerText = `${checked.length}/${all.length} 完成`;
+        }
+
+        // Tab Switching Logic
+        function switchDay(day) {
+            const tab1 = document.getElementById('tabDay1');
+            const tab2 = document.getElementById('tabDay2');
+            const sched1 = document.getElementById('scheduleDay1');
+            const sched2 = document.getElementById('scheduleDay2');
+
+            if (day === 1) {
+                tab1.className = "flex-1 py-2 text-center rounded-lg transition active-tab";
+                tab2.className = "flex-1 py-2 text-center rounded-lg text-gray-500 hover:text-gray-800 transition";
+                sched1.classList.remove('hidden');
+                sched2.classList.add('hidden');
+            } else {
+                tab2.className = "flex-1 py-2 text-center rounded-lg transition active-tab";
+                tab1.className = "flex-1 py-2 text-center rounded-lg text-gray-500 hover:text-gray-800 transition";
+                sched2.classList.remove('hidden');
+                sched1.classList.add('hidden');
+            }
+        }
+
+        // Copy/Share Helper Logic
+        function shareTripInfo() {
+            const text = `🚐 龜山冷泉開心農場 露營車之旅\n📅 時間：民國115年(2026年)10/17(六) 15:00 入營 ~ 10/18(日)\n📍 地址：桃園市龜山區大同路1020號\n📞 營主電話：0931-032898\n🐾 可帶狗狗一同前往！\n💡 記得攜帶毛巾、梳子、刮鬍刀等個人衛生用品！`;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('已複製行程資訊，可分享至群組！');
+                }).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try {
+                document.execCommand('copy');
+                showToast('已複製行程資訊！');
+            } catch (err) {
+                showToast('請手動截圖分享');
+            }
+            document.body.removeChild(ta);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // Initialize state on load
+        window.onload = function() {
+            loadChecklistState();
+        };
+    </script>
+</body>
+</html>
