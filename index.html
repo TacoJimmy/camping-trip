@@ -210,4 +210,236 @@
                         <input type="checkbox" class="w-4 h-4 text-forest-600 rounded border-gray-300 focus:ring-forest-500" onchange="saveChecklist()">
                         <span class="ml-3 text-xs text-gray-700 font-medium">防蚊液 / 個人藥品</span>
                     </label>
-                    <label class="flex items
+                    <label class="flex items-center p-2.5 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                        <input type="checkbox" class="w-4 h-4 text-forest-600 rounded border-gray-300 focus:ring-forest-500" onchange="saveChecklist()">
+                        <span class="ml-3 text-xs text-gray-700 font-medium">狗狗牽繩 / 飼料 / 拾便袋</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 一鍵複製按鈕 -->
+            <button onclick="copyTripInfo()" class="w-full bg-white border border-gray-300 active:bg-gray-100 text-gray-700 font-bold py-3 px-4 rounded-2xl shadow-sm transition-all flex items-center justify-center space-x-2 text-sm">
+                <i class="fa-regular fa-copy text-forest-600"></i>
+                <span>複製文字行程（傳至 LINE）</span>
+            </button>
+        </div>
+
+        <!-- TAB 2: 成員隊友檔案 -->
+        <div id="tab-members" class="space-y-4 hidden">
+
+            <!-- Amber: 娜美 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-amber-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">航海軍師</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-amber-400 bg-amber-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-amber-900">Amber</h3>
+                            <span class="text-xs text-amber-600 font-bold">× 娜美 (Nami)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">源自拉丁語「琥珀」，代表璀璨光芒與敏銳直覺。如同《海賊王》娜美般掌管全場航向，細心又可靠！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-amber-100 text-amber-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">精明指揮</span>
+                            <span class="bg-amber-100 text-amber-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">路線規劃</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ivy: 安妮亞 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-pink-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-pink-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">開心果隊長</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-pink-400 bg-pink-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-pink-900">Ivy</h3>
+                            <span class="text-xs text-pink-600 font-bold">× 安妮亞 (Anya)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">象徵常春藤的堅忍與生機。就像《間諜家家酒》安妮亞一樣充滿讀心魔法與滿滿萌力，隨時製造歡樂！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-pink-100 text-pink-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">可愛讀心</span>
+                            <span class="bg-pink-100 text-pink-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">花生狂熱</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peggy: 米卡莎 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-rose-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">最強戰力</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-400 bg-rose-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-rose-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-rose-900">Peggy</h3>
+                            <span class="text-xs text-rose-600 font-bold">× 米卡莎 (Mikasa)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">古英語意為「璀璨明珠」。宛如《進擊的巨人》米卡莎，擁有無與倫比的實力與冷靜可靠的護衛力！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-rose-100 text-rose-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">圍巾護衛</span>
+                            <span class="bg-rose-100 text-rose-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">無敵戰鬥力</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verona: 芙莉蓮 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-emerald-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">魔法美學</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-emerald-400 bg-emerald-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-emerald-900">Verona</h3>
+                            <span class="text-xs text-emerald-600 font-bold">× 芙莉蓮 (Frieren)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">源自義大利浪漫愛之城維洛那。如同《葬送的芙莉蓮》，看似從容隨性，實則掌握各種冷門絕技！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">魔法收集</span>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">隨性從容</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annie: 禰豆子 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-fuchsia-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-fuchsia-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">療癒天使</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-fuchsia-400 bg-fuchsia-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-fuchsia-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-fuchsia-900">Annie</h3>
+                            <span class="text-xs text-fuchsia-600 font-bold">× 禰豆子 (Nezuko)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">源自希伯來語「優雅與恩典」。就像《鬼滅之刃》禰豆子般極具親和力與療癒感，是團隊溫暖的守護者！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-fuchsia-100 text-fuchsia-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">血鬼術護航</span>
+                            <span class="bg-fuchsia-100 text-fuchsia-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">溫柔療癒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elena: 美少女戰士 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-purple-200/80 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">閃耀日光</div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-purple-400 bg-purple-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                        <svg class="w-12 h-12 text-purple-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v2a5 5 0 0010 0V7a5 5 0 00-5-5zm0 12c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+                    </div>
+                    <div>
+                        <div class="flex items-baseline space-x-2">
+                            <h3 class="text-lg font-black text-purple-900">Elena</h3>
+                            <span class="text-xs text-purple-600 font-bold">× 美少女戰士 (Sailor Moon)</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">源自希臘語「光輝燦爛的火把」。就像《美少女戰士》月野兔一樣自帶華麗光芒，代表愛與正義！</p>
+                        <div class="mt-2 flex flex-wrap gap-1">
+                            <span class="bg-purple-100 text-purple-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">華麗變身</span>
+                            <span class="bg-purple-100 text-purple-800 text-[10px] font-semibold px-2 py-0.5 rounded-md">愛與正義</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JS 邏輯 -->
+    <script>
+        // 1. 頁籤切換
+        function switchTab(tab) {
+            const infoTab = document.getElementById('tab-info');
+            const membersTab = document.getElementById('tab-members');
+            const infoBtn = document.getElementById('tab-info-btn');
+            const membersBtn = document.getElementById('tab-members-btn');
+
+            if (tab === 'info') {
+                infoTab.classList.remove('hidden');
+                membersTab.classList.add('hidden');
+                infoBtn.className = 'py-2 text-xs font-bold rounded-xl transition-all bg-amber-500 text-slate-950 shadow-md';
+                membersBtn.className = 'py-2 text-xs font-bold rounded-xl transition-all text-emerald-100 hover:bg-white/10';
+            } else {
+                infoTab.classList.add('hidden');
+                membersTab.classList.remove('hidden');
+                membersBtn.className = 'py-2 text-xs font-bold rounded-xl transition-all bg-amber-500 text-slate-950 shadow-md';
+                infoBtn.className = 'py-2 text-xs font-bold rounded-xl transition-all text-emerald-100 hover:bg-white/10';
+            }
+        }
+
+        // 2. 倒數計時器
+        const targetDate = new Date("2026-10-17T15:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-emerald-700 font-bold text-sm py-2'>🎉 露營活動進行中！</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. Checklist LocalStorage 紀錄
+        function saveChecklist() {
+            const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+            const states = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('camping_checklist_states', JSON.stringify(states));
+        }
+
+        function loadChecklist() {
+            const savedStates = JSON.parse(localStorage.getItem('camping_checklist_states'));
+            if (savedStates) {
+                const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+                checkboxes.forEach((cb, idx) => {
+                    if (savedStates[idx] !== undefined) {
+                        cb.checked = savedStates[idx];
+                    }
+                });
+            }
+        }
+        loadChecklist();
+
+        // 4. 一鍵複製行程
+        function copyTripInfo() {
+            const text = `🏕️【龜山冷泉開心農場 - 露營車之旅】
+📅 時間：115/10/17 15:00 入營 ~ 10/18
+📍 地址：桃園市龜山區大同路1020號
+📞 營主電話：0931-032898
+🌐 官網：https://www.happycamp.com.tw/index
+🚗 交通：自行前往
+🐶 提醒：可帶狗狗！請自備毛巾、梳子、刮鬍刀等個人用品。`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert("行程資訊已複製！可以貼到 LINE 群組囉～");
+            }).catch(err => {
+                alert("複製失敗，請手動複製");
+            });
+        }
+    </script>
+</body>
+</html>
